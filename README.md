@@ -1,1 +1,0 @@
-# helsinki-city-bikeapp

@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
+const stationRouter = require('./routes/stations')
+const journeyRouter = require('./routes/journeys')
 
 // Database connection
 mongoose.connect("mongodb://127.0.0.1:27017/solita")
@@ -11,6 +13,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/solita")
     .catch(error => {
         console.log(error)
     })
+
+app.use("/stations", stationRouter)
+app.use("/journeys", journeyRouter)
 
 app.listen(3000, () => {
     console.log("Listening to port 3000")

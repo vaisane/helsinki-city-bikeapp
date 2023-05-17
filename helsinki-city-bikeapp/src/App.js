@@ -1,18 +1,21 @@
-import {React, useState} from 'react'
-import Header from './components/header'
-import StationView from './views/StationView'
-import JourneyView from './views/JourneyView'
+import {React} from 'react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Header from './components/Header'
+import StationList from './pages/StationList'
+import Journeys from './pages/Journeys'
 
 const App = () => {
 
-  const [showView, setShowView] = useState("journeys")
   return (
     <>
-      <Header setShowView={setShowView}/>
-      {
-        showView === "journeys" ? <JourneyView />
-        : <StationView />
-      }
+    <BrowserRouter>
+    <Header />
+      <Routes>
+        <Route path="/"/>
+        <Route path="stations" element={<StationList/>}/>
+        <Route path="journeys" element={<Journeys/>}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }

@@ -5,10 +5,10 @@ const Journey = require("../models/journey")
 router.get("/", async (req, res) => {
     try {
         const page = req.query.page - 1 || 0
-        const limit = req.query.limit || 50
+        const limit = req.query.limit || 25
 
         const [result, totalItems] = await Promise.all([
-            Journey.find().limit(50).skip(page * limit),
+            Journey.find().limit(limit).skip(page * limit),
             Journey.count({})
         ])
         res.status(200).json({"result": result, "totalItems": totalItems, "totalPages": Math.ceil(totalItems / limit)})

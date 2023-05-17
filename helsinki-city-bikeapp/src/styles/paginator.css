@@ -1,0 +1,25 @@
+.paginator{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20rem;
+    font-size: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover{
+    cursor: pointer;
+}

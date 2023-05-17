@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../styles/paginator.css'
 const Pagination = ({currentPage, totalPages, setCurrentPage}) => {
     const nextPage = () =>{
         if(currentPage < totalPages){
@@ -12,11 +12,11 @@ const Pagination = ({currentPage, totalPages, setCurrentPage}) => {
         }
     }
   return (
-    <>
+    <div className="paginator">
+        <button onClick={() => prevPage()} className="btn">&lt;</button>
         <span>Page {currentPage}/{totalPages}</span>
-        <button onClick={() => prevPage()}>&lt;</button>
-        <button onClick={() => nextPage()}>&gt;</button>
-    </>
+        <button onClick={() => nextPage()} className="btn">&gt;</button>
+    </div>
   )
 }
 

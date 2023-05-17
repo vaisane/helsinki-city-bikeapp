@@ -1,5 +1,6 @@
 import {React, useEffect, useState} from 'react'
-import Pagination from '../components/Pagination'
+import Paginator from '../components/Paginator'
+import '../styles/stations.css'
 import axios from 'axios'
 
 const StationList = () => {
@@ -18,14 +19,13 @@ const StationList = () => {
     console.log(station)
   }
   return (
-    <>
-    <div>
+    <div className="stationList">
       {stations.map((station) => {
         return <div key={station["_id"]} onClick={() => {openSingleStationView(station)}}>{station["Nimi"]}</div>
       })}
+    <Paginator currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage}/>
     </div>
-    <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage}/>
-    </>
+    
   )
 }
 

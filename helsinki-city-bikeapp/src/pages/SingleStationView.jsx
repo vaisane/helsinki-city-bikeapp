@@ -1,11 +1,11 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-const SingleStationView = (props) => {
+const SingleStationView = () => {
     const location = useLocation()
-    console.log(location.state.station)
+    const stationInfo = location.state
     return (
-        <div>{location.state.station["Nimi"]}</div>
+        <div>{JSON.stringify(stationInfo)}</div>
     )
 }
 

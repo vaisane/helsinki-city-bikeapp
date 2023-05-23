@@ -1,22 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Station = require("../models/station")
+const stationController = require('../controllers/stations')
 
-router.get("/", async (req, res) => {
-    try {
-        const page = req.query.page - 1 || 0
-        const limit = req.query.limit || 25
-
-        const [result, totalItems] = await Promise.all([
-            Station.find().limit(limit).skip(page * limit),
-            Station.count({})
-        ])
-        console.log(req.query.page)
-        res.status(200).json({"result": result, "totalItems": totalItems, "totalPages": Math.ceil(totalItems / limit)})
-    } 
-    catch (error) {
-        res.status(500).send(error)
-    }
-})
+router.get("/", stationController.getAllStationsController)
 
 module.exports = router

@@ -14,7 +14,25 @@ const getAllJourneys = async (page, limit) => {
     }
 }
 
+const countJourneysStartingFromStation = async (stationId) => {
+    try {
+        const result = await Journey.count({"Departure station id" : stationId})
+        return result
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
 
-module.exports = {getAllJourneys}
+const countJourneysEndingToStation = async (stationId) => {
+    try {
+        const result = await Journey.count({"Return station id" : stationId})
+        return result
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+module.exports = {getAllJourneys, countJourneysEndingToStation, countJourneysStartingFromStation}
 
 

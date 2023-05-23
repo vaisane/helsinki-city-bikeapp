@@ -1,18 +1,20 @@
 const Station = require('../models/station')
 
 const getAllStations = async (page, limit) => {
-    try {
-        const [stations, totalItems] = await Promise.all([
-            Station.find().limit(limit).skip(page * limit),
-            Station.count({})
-        ])
+    const [stations, totalItems] = await Promise.all([
+        Station.find().limit(limit).skip(page * limit),
+        Station.count({})
+    ])
 
-        return {"result": stations, "totalPages": Math.ceil(totalItems / limit)}
-    } 
-    catch (error) {
-        console.log(error)
-    }
+    return {"result": stations, "totalPages": Math.ceil(totalItems / limit)}
 }
 
+const stationSearch = async (page, limit, searchText) => {
+    const [stations, totalItems] = await Promise.all([
+        Station.find({Nimi: {$: `${searchText}`, $options: "i"}}).limit(limit).skip(page * limit),
+        Station.count({Nimi: {$regex: `${searchText}`, $options: "i"}})
+    ])
 
-module.exports = {getAllStations}
+    return {"result": stations, "totalPages": Math.ceil(totalItems / limit)}
+}
+module.exports = {getAllStations, stationSearch}

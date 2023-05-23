@@ -33,4 +33,35 @@ const countJourneysStartingFromStationController = async (req, res) => {
         console.log(error)
     }
 }
-module.exports = {getAllJourneysController, countJourneysEndingToStationController, countJourneysStartingFromStationController}
+
+const searchJourneysByDepartureStation = async (req, res) => {
+    const page = req.query.page - 1 || 0
+    const limit = req.query.limit || 25
+    const searchText = req.query.searchText || ""
+    try {
+        res.json(await journeyServices.journeySearchDeparture(page, limit, searchText))
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+const searchJourneysByReturningStation = async (req, res) => {
+    const page = req.query.page - 1 || 0
+    const limit = req.query.limit || 25
+    const searchText = req.query.searchText || ""
+    
+    try {
+        res.json(await journeyServices.journeySearchReturning(page, limit, searchText))
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+module.exports = {
+    getAllJourneysController, 
+    countJourneysEndingToStationController, 
+    countJourneysStartingFromStationController,
+    searchJourneysByDepartureStation,
+    searchJourneysByReturningStation
+}

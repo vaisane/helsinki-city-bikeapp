@@ -3,9 +3,12 @@ import express from 'express'
 import cors from 'cors'
 import journeyRouter from './routes/journeys.js'
 import stationRouter from './routes/stations.js'
-const app = express()
+import dotenv from 'dotenv'
 
-connect("mongodb://127.0.0.1:27017/solita")
+const app = express()
+dotenv.config()
+
+connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Connected to MongoDB")
     })

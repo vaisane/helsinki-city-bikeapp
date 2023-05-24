@@ -11,7 +11,7 @@ export const getAllStations = async (page, limit) => {
 
 export const stationSearch = async (page, limit, searchText) => {
     const [stations, totalItems] = await Promise.all([
-        Station.find({Nimi: {$: `${searchText}`, $options: "i"}}).limit(limit).skip(page * limit),
+        Station.find({Nimi: {$regex: `${searchText}`, $options: "i"}}).limit(limit).skip(page * limit),
         Station.count({Nimi: {$regex: `${searchText}`, $options: "i"}})
     ])
 

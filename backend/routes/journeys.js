@@ -1,11 +1,17 @@
-const express = require('express')
-const router = express.Router()
-const journeyController = require('../controllers/journeys')
+import { Router } from 'express'
+import { 
+    getAllJourneysController, 
+    countReturningJourneysController,
+    countStartingJourneysController,
+    searchJourneysByDepartureStation, 
+    searchJourneysByReturningStation } from '../controllers/journeys.js'
+    
+const router = Router()
 
-router.get("/", journeyController.getAllJourneysController)
-router.get("/starting-station", journeyController.countJourneysStartingFromStationController)
-router.get("/ending-station", journeyController.countJourneysEndingToStationController)
-router.get("/search/departure", journeyController.searchJourneysByDepartureStation)
-router.get("/search/return", journeyController.searchJourneysByReturningStation)
+router.get("/", getAllJourneysController)
+router.get("/count-starting", countStartingJourneysController)
+router.get("/count-returning", countReturningJourneysController)
+router.get("/search/departure", searchJourneysByDepartureStation)
+router.get("/search/return", searchJourneysByReturningStation)
 
-module.exports = router
+export default router

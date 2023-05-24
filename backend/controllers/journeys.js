@@ -1,67 +1,65 @@
-const journeyServices = require('../services/journeys')
+import { 
+    getAllJourneys, 
+    countReturningJourneys, 
+    countStartingJourneys, 
+    journeySearchDeparture, 
+    journeySearchReturning } from '../services/journeys.js'
 
-const getAllJourneysController = async (req, res) => {
+export const getAllJourneysController = async (req, res) => {
     const page = req.query.page - 1 || 0
     const limit = req.query.limit || 25
     
     try {
-        res.json(await journeyServices.getAllJourneys(page, limit))
+        res.json(await getAllJourneys(page, limit))
     }
     catch (error) {
         console.log(error)
     }
 }
 
-const countJourneysEndingToStationController = async (req, res) => {
+export const countReturningJourneysController = async (req, res) => {
     const stationId = req.query.stationId
 
     try {
-        res.json(await journeyServices.countJourneysEndingToStation(stationId))
+        res.json(await countReturningJourneys(stationId))
     }
     catch (error) {
         console.log(error)
     }
 }
 
-const countJourneysStartingFromStationController = async (req, res) => {
+export const countStartingJourneysController = async (req, res) => {
     const stationId = req.query.stationId
 
     try {
-        res.json(await journeyServices.countJourneysStartingFromStation(stationId))
+        res.json(await countStartingJourneys(stationId))
     }
     catch (error) {
         console.log(error)
     }
 }
 
-const searchJourneysByDepartureStation = async (req, res) => {
+export const searchJourneysByDepartureStation = async (req, res) => {
     const page = req.query.page - 1 || 0
     const limit = req.query.limit || 25
     const searchText = req.query.searchText || ""
     try {
-        res.json(await journeyServices.journeySearchDeparture(page, limit, searchText))
+        res.json(await journeySearchDeparture(page, limit, searchText))
     }
     catch (error) {
         console.log(error)
     }
 }
 
-const searchJourneysByReturningStation = async (req, res) => {
+export const searchJourneysByReturningStation = async (req, res) => {
     const page = req.query.page - 1 || 0
     const limit = req.query.limit || 25
     const searchText = req.query.searchText || ""
     
     try {
-        res.json(await journeyServices.journeySearchReturning(page, limit, searchText))
+        res.json(await journeySearchReturning(page, limit, searchText))
     }
     catch (error) {
         console.log(error)
     }
-}
-module.exports = {
-    getAllJourneysController, 
-    countJourneysEndingToStationController, 
-    countJourneysStartingFromStationController,
-    searchJourneysByDepartureStation,
-    searchJourneysByReturningStation
 }

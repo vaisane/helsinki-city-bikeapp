@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+import { Schema, model } from 'mongoose'
 
 const journeySchema = new Schema({
     "Departure": String,
@@ -12,6 +11,6 @@ const journeySchema = new Schema({
     "Duration (sec)": Number
 })
 
-const Model = mongoose.model('journey', journeySchema)
+const Model = model('journey', journeySchema)
 
-module.exports = Model
+export default Model

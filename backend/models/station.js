@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+import { Schema, model } from 'mongoose'
 
 const stationSchema = new Schema({
     "FID": Number,
@@ -17,6 +16,6 @@ const stationSchema = new Schema({
     "Kapasiteetti": Number,
 })
 
-const Model = mongoose.model('station', stationSchema)
+const Model = model('station', stationSchema)
 
-module.exports = Model
+export default Model

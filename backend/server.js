@@ -1,13 +1,11 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
+import { connect } from 'mongoose'
+import express from 'express'
+import cors from 'cors'
+import journeyRouter from './routes/journeys.js'
+import stationRouter from './routes/stations.js'
 const app = express()
 
-const stationRouter = require('./routes/stations')
-const journeyRouter = require('./routes/journeys')
-
-// Database connection
-mongoose.connect("mongodb://127.0.0.1:27017/solita")
+connect("mongodb://127.0.0.1:27017/solita")
     .then(() => {
         console.log("Connected to MongoDB")
     })

@@ -6,7 +6,6 @@ import {
   journeySearchDeparture,
   journeySearchReturning,
 } from "../services/journeys.js";
-
 import mongoose from "mongoose";
 
 describe("Journey services", () => {

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const JourneyView = () => {
-  return (
-    <div>journeys</div>
-  )
-}
+  return <div>journeys</div>;
+};
 
-export default JourneyView
+export default JourneyView;

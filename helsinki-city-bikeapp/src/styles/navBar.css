@@ -1,24 +1,24 @@
-.navBar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 3rem;
-    background-color: white;
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  background-color: white;
 }
 
-.navLink{
-    font-size: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: black;
-    background-color: white;
-    height: 100%;
-    width: 25rem;
-    border-bottom: 1px solid black;
+.navLink {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  height: 100%;
+  width: 25rem;
+  border-bottom: 1px solid black;
 }
 
-.navLink:hover{
-    background-color: #f6f6f6;
+.navLink:hover {
+  background-color: #f6f6f6;
 }

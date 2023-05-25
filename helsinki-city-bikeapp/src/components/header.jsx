@@ -1,6 +1,6 @@
-import React from 'react'
-import Navbar from './Navbar'
-import '../styles/header.css'
+import React from "react";
+import Navbar from "./Navbar";
+import "../styles/header.css";
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
       <h1>Helsinki City BikeApp!</h1>
       <Navbar />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

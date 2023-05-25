@@ -11,12 +11,12 @@ describe("Station services", () => {
         await mongoose.connection.close()
     })
     
-    it("should return first 25 stations", async () => {
+    it("should return first 25 stations from database", async () => {
         const stations = await getAllStations(0, 25)
         expect(stations).toHaveProperty("result")
         expect(stations).toHaveProperty("totalPages")
         expect(typeof stations["totalPages"]).toBe("number")
-        expect(stations["result"].length).toBe(25)
+        expect(stations["result"]).toHaveLength(25)
     })
 
     it("should return stations matching search string", async () => {
@@ -31,7 +31,7 @@ describe("Station services", () => {
         expect(stations1["result"].length).toBeGreaterThan(0)
         expect(stations2).toHaveProperty("result")
         expect(stations2).toHaveProperty("totalPages")
-        expect(stations2["result"].length).toEqual(0)
+        expect(stations2["result"]).toHaveLength(0)
         
     })
 })

@@ -3,7 +3,8 @@ import {
     countReturningJourneys, 
     countStartingJourneys, 
     journeySearchDeparture, 
-    journeySearchReturning } from '../services/journeys.js'
+    journeySearchReturning 
+} from '../services/journeys.js'
 
 export const getAllJourneysController = async (req, res) => {
     const page = req.query.page - 1 || 0

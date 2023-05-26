@@ -21,3 +21,12 @@ export const stationSearch = async (page, limit, searchText) => {
 
   return { result: stations, totalPages: Math.ceil(totalItems / limit) };
 };
+
+export const getStationById = async (stationId) => {
+  const station = await Station.find({ ID: stationId });
+  if (station.length == 0) {
+    throw new Error("Station not found");
+  } else {
+    return station;
+  }
+};

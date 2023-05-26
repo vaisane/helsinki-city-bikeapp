@@ -1,4 +1,8 @@
-import { getAllStations, stationSearch } from "../services/stations.js";
+import {
+  getAllStations,
+  stationSearch,
+  getStationById,
+} from "../services/stations.js";
 import { describe, beforeEach, afterEach, it, expect } from "@jest/globals";
 import mongoose from "mongoose";
 
@@ -32,5 +36,14 @@ describe("Station services", () => {
     expect(stations2).toHaveProperty("result");
     expect(stations2).toHaveProperty("totalPages");
     expect(stations2["result"]).toHaveLength(0);
+  });
+
+  it("should return single station", async () => {
+    const station = await getStationById(50);
+    expect(station).toHaveLength(1);
+    expect(station[0]).toHaveProperty("ID");
+    expect(station[0]).toHaveProperty("Nimi");
+    expect(station[0]).toHaveProperty("Osoite");
+    expect(station[0]).toHaveProperty("Kaupunki");
   });
 });

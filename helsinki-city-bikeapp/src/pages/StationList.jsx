@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Paginator from "../components/Paginator";
-import "../styles/stations.css";
+import "../styles/app.css";
 import axios from "axios";
 
 const StationList = () => {

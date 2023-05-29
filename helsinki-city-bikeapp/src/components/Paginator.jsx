@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/paginator.css";
+import "../styles/app.css";
 const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
   const nextPage = () => {
     if (currentPage < totalPages) {

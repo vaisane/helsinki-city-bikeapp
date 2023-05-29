@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useState, useEffect } from "react";
+import "../styles/app.css";
 import axios from "axios";
 
 const columns = [
   {
     field: "Departure station name",
     headerName: "Departure station",
+    headerClassName: "listHeader",
     flex: 2,
   },
-  { field: "Return station name", headerName: "Return station", flex: 2 },
-  { field: "Covered distance (m)", headerName: "Distance (km)", flex: 1 },
-  { field: "Duration (sec)", headerName: "Duration (min)", flex: 1 },
+  {
+    field: "Return station name",
+    headerName: "Return station",
+    headerClassName: "listHeader",
+    flex: 2,
+  },
+  {
+    field: "Covered distance (m)",
+    headerName: "Distance",
+    headerClassName: "listHeader",
+    flex: 1,
+    valueFormatter: (params) => {
+      const kilometers = (params.value / 1000).toFixed(1);
+      return `${kilometers} km`;
+    },
+  },
+  {
+    field: "Duration (sec)",
+    headerName: "Duration",
+    headerClassName: "listHeader",
+    flex: 1,
+    valueFormatter: (params) => {
+      const minutes = Math.floor(params.value / 60);
+      const seconds = params.value % 60;
+      return `${minutes} min ${seconds}sec`;
+    },
+  },
 ];
 
 const JourneyView = () => {
@@ -38,7 +63,7 @@ const JourneyView = () => {
 
   return (
     <>
-      <h2>Journey list</h2>
+      <h2 style={{ justifySelf: "center" }}>Journey list</h2>
       <DataGrid
         rows={journeys}
         getRowId={(row) => row["_id"]}
@@ -50,6 +75,10 @@ const JourneyView = () => {
         rowsPerPageOptions={[25, 50, 100]}
         autoHeight={true}
         loading={loading}
+        sx={{
+          boxShadow: 5,
+          marginBottom: 5,
+        }}
       />
     </>
   );

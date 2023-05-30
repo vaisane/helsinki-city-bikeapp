@@ -34,7 +34,7 @@ const columns = [
     valueFormatter: (params) => {
       const minutes = Math.floor(params.value / 60);
       const seconds = params.value % 60;
-      return `${minutes} min ${seconds}sec`;
+      return `${minutes} min ${seconds} sec`;
     },
   },
 ];
@@ -78,6 +78,7 @@ const JourneyView = () => {
         sx={{
           boxShadow: 5,
           marginBottom: 5,
+          cursor: "pointer",
         }}
       />
     </>

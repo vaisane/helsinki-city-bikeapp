@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import "../styles/app.css";
 import axios from "axios";
@@ -38,7 +39,11 @@ const StationList = () => {
     pageSize: 25,
     page: 0,
   });
+  const navigate = useNavigate();
 
+  const navigateToSingleStationView = (id) => {
+    navigate(`/stations/${id}`);
+  };
   useEffect(() => {
     setLoading(true);
     axios
@@ -69,6 +74,10 @@ const StationList = () => {
         sx={{
           boxShadow: 5,
           marginBottom: 5,
+          cursor: "pointer",
+        }}
+        onRowClick={(params) => {
+          navigateToSingleStationView(params.row.ID);
         }}
       />
     </>

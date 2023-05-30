@@ -1,7 +1,7 @@
 import { describe, it, expect } from "@jest/globals";
 import request from "supertest";
 
-const baseUrl = process.env.BASE_URL;
+const baseUrl = `${process.env.BASE_URL}:${process.env.PORT}`;
 
 describe("Journeys endpoints", () => {
   it("/journeys GET", async () => {

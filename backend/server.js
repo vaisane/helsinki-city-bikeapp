@@ -4,9 +4,10 @@ import cors from "cors";
 import journeyRouter from "./routes/journeys.js";
 import stationRouter from "./routes/stations.js";
 import dotenv from "dotenv";
-
-const app = express();
 dotenv.config();
+const app = express();
+
+const port = process.env.PORT;
 
 connect(process.env.MONGODB_URI)
   .then(() => {
@@ -20,6 +21,6 @@ app.use(cors());
 app.use("/stations", stationRouter);
 app.use("/journeys", journeyRouter);
 
-app.listen(4000, () => {
-  console.log("Listening to port 4000");
+app.listen(port, () => {
+  console.log(`Listening to port ${port}`);
 });

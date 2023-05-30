@@ -41,6 +41,7 @@ const StationList = () => {
     page: 0,
   });
   const navigate = useNavigate();
+  const apiUri = process.env.REACT_APP_API_URI;
 
   const navigateToSingleStationView = (id) => {
     navigate(`/stations/${id}`);
@@ -49,7 +50,7 @@ const StationList = () => {
     setLoading(true);
     axios
       .get(
-        `http://127.0.0.1:4000/stations/?page=${paginationModel.page}&limit=${paginationModel.pageSize}`
+        `${apiUri}/stations/?page=${paginationModel.page}&limit=${paginationModel.pageSize}`
       )
       .then((response) => {
         setStations(response.data.result);

@@ -14,6 +14,7 @@ const SingleStationView = () => {
   const [error, setError] = useState(false);
   const location = useLocation();
   const stationId = location.pathname.split("/")[2];
+  const apiUri = process.env.REACT_APP_API_URI;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,13 +22,9 @@ const SingleStationView = () => {
     setError(false);
     axios
       .all([
-        axios.get(`http://127.0.0.1:4000/stations/id/${stationId}`),
-        axios.get(
-          `http://127.0.0.1:4000/journeys/count-starting?stationId=${stationId}`
-        ),
-        axios.get(
-          `http://127.0.0.1:4000/journeys/count-returning?stationId=${stationId}`
-        ),
+        axios.get(`${apiUri}/stations/id/${stationId}`),
+        axios.get(`${apiUri}/journeys/count-starting?stationId=${stationId}`),
+        axios.get(`${apiUri}/journeys/count-returning?stationId=${stationId}`),
       ])
       .then(
         axios.spread((station, startingJourneys, endingJourneys) => {
@@ -41,7 +38,7 @@ const SingleStationView = () => {
         setLoading(false);
         setError(true);
       });
-  }, []);
+  }, [stationId, apiUri]);
 
   if (error) {
     return <NotFoundError />;

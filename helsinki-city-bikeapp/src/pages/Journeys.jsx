@@ -47,12 +47,13 @@ const JourneyView = () => {
     pageSize: 25,
     page: 0,
   });
+  const apiUri = process.env.REACT_APP_API_URI;
 
   useEffect(() => {
     setLoading(true);
     axios
       .get(
-        `http://127.0.0.1:4000/journeys/?page=${paginationModel.page}&limit=${paginationModel.pageSize}`
+        `${apiUri}/journeys/?page=${paginationModel.page}&limit=${paginationModel.pageSize}`
       )
       .then((response) => {
         setJourneys(response.data.result);

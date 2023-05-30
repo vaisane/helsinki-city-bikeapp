@@ -5,7 +5,7 @@ import "../styles/app.css";
 const Header = () => {
   return (
     <div className="header">
-      <h1>Helsinki City BikeApp!</h1>
+      <h1>Helsinki City BikeApp</h1>
       <Navbar />
     </div>
   );

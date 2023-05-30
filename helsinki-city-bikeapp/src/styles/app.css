@@ -46,3 +46,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.stationSearch {
+  display: flex;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}

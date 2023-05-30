@@ -19,11 +19,10 @@ export const stationSearchController = async (req, res) => {
   const page = req.query.page || 0;
   const limit = req.query.limit || 25;
   const searchText = req.query.searchText || "";
-
   try {
     res.json(await stationSearch(page, limit, searchText));
   } catch (error) {
-    console.log(error);
+    res.status(404).send("Station not found");
   }
 };
 

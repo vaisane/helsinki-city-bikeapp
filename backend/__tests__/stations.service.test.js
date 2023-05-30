@@ -18,8 +18,8 @@ describe("Station services", () => {
   it("should return first 25 stations from database", async () => {
     const stations = await getAllStations(0, 25);
     expect(stations).toHaveProperty("result");
-    expect(stations).toHaveProperty("totalPages");
-    expect(typeof stations["totalPages"]).toBe("number");
+    expect(stations).toHaveProperty("totalItems");
+    expect(typeof stations["totalItems"]).toBe("number");
     expect(stations["result"]).toHaveLength(25);
   });
 
@@ -31,10 +31,10 @@ describe("Station services", () => {
     const stations2 = await stationSearch(0, 25, query2);
 
     expect(stations1).toHaveProperty("result");
-    expect(stations1).toHaveProperty("totalPages");
+    expect(stations1).toHaveProperty("totalItems");
     expect(stations1["result"].length).toBeGreaterThan(0);
     expect(stations2).toHaveProperty("result");
-    expect(stations2).toHaveProperty("totalPages");
+    expect(stations2).toHaveProperty("totalItems");
     expect(stations2["result"]).toHaveLength(0);
   });
 

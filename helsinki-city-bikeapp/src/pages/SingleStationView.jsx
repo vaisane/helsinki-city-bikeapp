@@ -21,7 +21,7 @@ const SingleStationView = () => {
     setError(false);
     axios
       .all([
-        axios.get(`http://127.0.0.1:4000/stations/${stationId}`),
+        axios.get(`http://127.0.0.1:4000/stations/id/${stationId}`),
         axios.get(
           `http://127.0.0.1:4000/journeys/count-starting?stationId=${stationId}`
         ),

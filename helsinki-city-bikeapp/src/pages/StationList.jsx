@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import "../styles/app.css";
 import axios from "axios";
+import StationSearch from "../components/StationSearch";
 
 const columns = [
   {
@@ -12,7 +13,7 @@ const columns = [
     flex: 1,
   },
   {
-    field: "Name",
+    field: "Nimi",
     headerName: "Name",
     headerClassName: "listHeader",
     flex: 1,
@@ -60,6 +61,12 @@ const StationList = () => {
   return (
     <>
       <h2 style={{ justifySelf: "center" }}>Station list</h2>
+      <StationSearch
+        setStations={setStations}
+        setLoading={setLoading}
+        setRowCount={setRowCount}
+        paginationModel={paginationModel}
+      />
       <DataGrid
         rows={stations}
         getRowId={(row) => row["_id"]}

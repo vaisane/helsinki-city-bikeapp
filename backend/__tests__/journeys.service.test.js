@@ -20,8 +20,8 @@ describe("Journey services", () => {
   it("should return first 50 journeys from database", async () => {
     const journeys = await getAllJourneys(0, 50);
     expect(journeys).toHaveProperty("result");
-    expect(journeys).toHaveProperty("totalPages");
-    expect(typeof journeys["totalPages"]).toBe("number");
+    expect(journeys).toHaveProperty("totalItems");
+    expect(typeof journeys["totalItems"]).toBe("number");
     expect(journeys["result"].length).toBe(50);
   }, 15000);
 
@@ -43,7 +43,7 @@ describe("Journey services", () => {
     const searchText = "laajalahden AUKIO";
     const journeys = await journeySearchDeparture(0, 25, searchText);
     expect(journeys).toHaveProperty("result");
-    expect(journeys).toHaveProperty("totalPages");
+    expect(journeys).toHaveProperty("totalItems");
     expect(journeys["result"]).toHaveLength(25);
     journeys["result"].forEach((journey) => {
       expect(journey["Departure station name"]).toBe("Laajalahden aukio");
@@ -54,7 +54,7 @@ describe("Journey services", () => {
     const searchText = "Viiskul";
     const journeys = await journeySearchReturning(0, 25, searchText);
     expect(journeys).toHaveProperty("result");
-    expect(journeys).toHaveProperty("totalPages");
+    expect(journeys).toHaveProperty("totalItems");
     expect(journeys["result"]).toHaveLength(25);
     journeys["result"].forEach((journey) => {
       expect(journey["Return station name"]).toBe("Viiskulma");

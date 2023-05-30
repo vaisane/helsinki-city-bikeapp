@@ -8,7 +8,7 @@ describe("Journeys endpoints", () => {
     const response = await request(baseUrl).get("/journeys");
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty("result");
-    expect(response.body).toHaveProperty("totalPages");
+    expect(response.body).toHaveProperty("totalItems");
   }, 15000);
 
   it("/journeys/count-starting /GET", async () => {
@@ -33,7 +33,7 @@ describe("Journeys endpoints", () => {
       .query({ searchText: "korkeasaari" });
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty("result");
-    expect(response.body).toHaveProperty("totalPages");
+    expect(response.body).toHaveProperty("totalItems");
   }, 15000);
 
   it("/journeys/search-return-station /GET", async () => {
@@ -42,6 +42,6 @@ describe("Journeys endpoints", () => {
       .query({ searchText: "korkeasaari" });
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty("result");
-    expect(response.body).toHaveProperty("totalPages");
+    expect(response.body).toHaveProperty("totalItems");
   }, 15000);
 });

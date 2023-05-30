@@ -37,7 +37,7 @@ export const journeySearchReturning = async (page, limit, searchText) => {
       "Return station name": { $regex: `${searchText}`, $options: "i" },
     }),
   ]);
-  return { result: journeys, totalPages: Math.ceil(totalItems / limit) };
+  return { result: journeys, totalItems: totalItems };
 };
 
 export const journeySearchDeparture = async (page, limit, searchText) => {

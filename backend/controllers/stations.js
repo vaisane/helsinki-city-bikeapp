@@ -5,7 +5,7 @@ import {
 } from "../services/stations.js";
 
 export const getAllStationsController = async (req, res) => {
-  const page = req.query.page - 1 || 0;
+  const page = req.query.page || 0;
   const limit = req.query.limit || 25;
 
   try {
@@ -16,7 +16,7 @@ export const getAllStationsController = async (req, res) => {
 };
 
 export const stationSearchController = async (req, res) => {
-  const page = req.query.page - 1 || 0;
+  const page = req.query.page || 0;
   const limit = req.query.limit || 25;
   const searchText = req.query.searchText || "";
 

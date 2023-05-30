@@ -7,7 +7,7 @@ import {
 } from "../services/journeys.js";
 
 export const getAllJourneysController = async (req, res) => {
-  const page = req.query.page - 1 || 0;
+  const page = req.query.page || 0;
   const limit = req.query.limit || 25;
 
   try {
@@ -38,7 +38,7 @@ export const countStartingJourneysController = async (req, res) => {
 };
 
 export const searchJourneysByDepartureStation = async (req, res) => {
-  const page = req.query.page - 1 || 0;
+  const page = req.query.page || 0;
   const limit = req.query.limit || 25;
   const searchText = req.query.searchText || "";
   try {
@@ -49,7 +49,7 @@ export const searchJourneysByDepartureStation = async (req, res) => {
 };
 
 export const searchJourneysByReturningStation = async (req, res) => {
-  const page = req.query.page - 1 || 0;
+  const page = req.query.page || 0;
   const limit = req.query.limit || 25;
   const searchText = req.query.searchText || "";
 

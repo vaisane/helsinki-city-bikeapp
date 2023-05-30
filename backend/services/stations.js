@@ -8,7 +8,7 @@ export const getAllStations = async (page, limit) => {
     Station.count({}),
   ]);
 
-  return { result: stations, totalPages: Math.ceil(totalItems / limit) };
+  return { result: stations, totalItems: Math.ceil(totalItems) };
 };
 
 export const stationSearch = async (page, limit, searchText) => {
@@ -19,7 +19,7 @@ export const stationSearch = async (page, limit, searchText) => {
     Station.count({ Nimi: { $regex: `${searchText}`, $options: "i" } }),
   ]);
 
-  return { result: stations, totalPages: Math.ceil(totalItems / limit) };
+  return { result: stations, totalItems: totalItems };
 };
 
 export const getStationById = async (stationId) => {

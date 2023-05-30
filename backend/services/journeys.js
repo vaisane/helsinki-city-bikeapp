@@ -7,7 +7,7 @@ export const getAllJourneys = async (page, limit) => {
       .skip(page * limit),
     Journey.count({}),
   ]);
-  return { result: journeys, totalPages: Math.ceil(totalItems / limit) };
+  return { result: journeys, totalItems: totalItems };
 };
 
 export const countStartingJourneys = async (stationId) => {
@@ -51,5 +51,5 @@ export const journeySearchDeparture = async (page, limit, searchText) => {
       "Departure station name": { $regex: `${searchText}`, $options: "i" },
     }),
   ]);
-  return { result: journeys, totalPages: Math.ceil(totalItems / limit) };
+  return { result: journeys, totalItems: totalItems };
 };

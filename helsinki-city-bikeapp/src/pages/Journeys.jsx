@@ -42,10 +42,10 @@ const columns = [
 const JourneyView = () => {
   const [journeys, setJourneys] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
+  const [rowCount, setRowCount] = useState(0);
   const [paginationModel, setPaginationModel] = useState({
     pageSize: 25,
-    page: 1,
+    page: 0,
   });
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const JourneyView = () => {
       )
       .then((response) => {
         setJourneys(response.data.result);
-        setTotalPages(response.data.totalPages);
+        setRowCount(response.data.totalItems);
         setLoading(false);
       });
   }, [paginationModel]);
@@ -71,7 +71,7 @@ const JourneyView = () => {
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
         paginationMode="server"
-        rowCount={totalPages}
+        rowCount={rowCount}
         rowsPerPageOptions={[25, 50, 100]}
         autoHeight={true}
         loading={loading}

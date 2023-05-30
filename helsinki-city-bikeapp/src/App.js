@@ -11,7 +11,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" />
+          <Route path="*" element={<StationList />} />
           <Route path="stations" element={<StationList />} />
           <Route
             path="/stations/:stationName"

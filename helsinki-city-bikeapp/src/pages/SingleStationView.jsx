@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NotFoundError from "../components/NotFoundError";
 import LoadingLinear from "../components/LoadingLinear";
+import StationLocation from "../components/StationLocation";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import "../styles/app.css";
@@ -54,6 +55,7 @@ const SingleStationView = () => {
           <p>Address: {station["Osoite"]}</p>
           <p>Journeys starting from this station: {journeysStarting}</p>
           <p>Journeys ending to this station: {journeysEnding}</p>
+          <StationLocation x={station["x"]} y={station["y"]} />
           <Button
             variant="contained"
             onClick={() => {

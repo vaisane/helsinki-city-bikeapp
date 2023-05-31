@@ -57,7 +57,7 @@ const StationList = () => {
         setRowCount(response.data.totalItems);
         setLoading(false);
       });
-  }, [paginationModel]);
+  }, [paginationModel, apiUri]);
 
   return (
     <>

@@ -14,6 +14,7 @@ Frontend and backend are both build with JavaScript.
 - Mongoose
 - React
 - Material UI components
+- React-map-gl
 
 ### Features
 
@@ -56,8 +57,8 @@ First of all make sure to have ports 3000, 4000 and 27017 (MongoDB default port)
 5. Create another .env -file in root of helsinki-city-bikeapp -folder.\
     That file should contain following variables: \
     `PORT=3000`\
-    `REACT_APP_API_URI="http://127.0.0.1:4000"` <- Match this port to another .env-file's port
-
+    `REACT_APP_API_URI="http://127.0.0.1:4000"` <- Match this port to another .env-file's port\
+    `REACT_APP_MAP_TOKEN="xxx"` <- This token is needed to display maps in app. You can get token free by registering to https://www.mapbox.com/
 6. Now everything should be ready to run. Run `npm start` command in both folders and locate to `http://localhost:3000/` with your browser to see app in action.
 
 7. To run backend tests locate to backend folder and run `npm test`
@@ -77,11 +78,14 @@ First of all make sure to have ports 3000, 4000 and 27017 (MongoDB default port)
 I'm still working on this project and here's what's still on TODO-list.
 
 - [ ] Frontend tests
-- [ ] Station map
+- [ ] Better error handling
+- [x] Station map
+- [ ] Map to show all stations
 - [ ] Top 5 most popular return stations for journeys starting from the station
 - [ ] Top 5 most popular departure stations for journeys ending at the station
-- [ ] Run both frontend and backend in Docker or Cloud
 - [ ] UI and endpoints to add journeys/stations
+- [ ] Run both frontend and backend in Docker or Cloud
+- [ ] Make the app look good
 
     
     

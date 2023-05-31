@@ -60,7 +60,7 @@ const JourneyView = () => {
         setRowCount(response.data.totalItems);
         setLoading(false);
       });
-  }, [paginationModel]);
+  }, [paginationModel, apiUri]);
 
   return (
     <>

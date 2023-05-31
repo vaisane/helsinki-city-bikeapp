@@ -24,9 +24,9 @@ Station list with search functionality and server side pagination because journe
 
 ![Pagination example](https://i.imgur.com/1xzxGJS.png)
 
-Clicking any of the station rows shows you more details about station. Starting and ending journeys are calculated by backend service: 
+Clicking any of the station rows shows you more details about station and location on the map. Starting and ending journeys are calculated by backend service: 
 
-![Single station view](https://i.imgur.com/m7AmEMz.png)
+![Single station view](https://i.imgur.com/8hS8fzi.png)
 
 Journey list shows some information about journeys and pagination works there too. Journeys dataset is about ~3 million rows.
 
